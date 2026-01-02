@@ -177,7 +177,12 @@ def command_processor(stat_path):
     # % (average of all channels)
     if stat["cycles"] == 0:
         print(stat_path)
-    stat["utilization"] = 100.00 - (stat["idle_cycles"] / CH_PER_DV / stat["cycles"]) * 100.00
+    # 修改開始: 防止除以零錯誤
+    if stat["cycles"] > 0:
+        stat["utilization"] = 100.00 - (stat["idle_cycles"] / CH_PER_DV / stat["cycles"]) * 100.00
+    else:
+        stat["utilization"] = 0.0
+    # 修改結束
     return stat
 
 def power_calculator(stat, PCIE_bits, Head, HiddenDim, Tokens, GQA):
