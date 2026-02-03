@@ -17,6 +17,7 @@ Clone the repository recursively:
 
 ```bash
 git clone --recursive https://github.com/Yufeng98/CENT.git
+git clone --recursive https://github.com/hungmaosong/CENT.git
 cd CENT
 ```
 
